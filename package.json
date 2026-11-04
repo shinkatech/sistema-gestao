@@ -1,0 +1,15 @@
+{
+  "name": "sistema-gestao",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "start": "npm run start -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}

@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: Sora, ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #1c1915;
+  --color-paper: #f3f0e8;
+  --color-card: #fffdf8;
+  --color-line: #e4dccf;
+  --color-copper: #a3471a;
+  --color-copper-dark: #7c3414;
+  --color-sidebar: #17212b;
+  --color-muted: #6f675e;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d6cec2 transparent;
+}
+
+@layer components {
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none transition placeholder:text-stone-400 focus:border-copper focus:ring-4 focus:ring-copper/15;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-copper text-white hover:bg-copper-dark;
+  }
+
+  .btn-secondary {
+    @apply border border-line bg-white text-ink hover:bg-stone-50;
+  }
+
+  .btn-ghost {
+    @apply text-ink hover:bg-black/5;
+  }
+
+  .btn-danger {
+    @apply bg-red-800 text-white hover:bg-red-900;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-card;
+  }
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .app-shell,
+  .app-main,
+  .print-area,
+  .print-area * {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  .app-shell,
+  .app-main,
+  .print-area {
+    display: block !important;
+  }
+}
